@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../auth/authContext/AuthContext";
 import { useAuth0 } from "@auth0/auth0-react";
 import { toast } from "react-hot-toast";
+import { motion } from "framer-motion";
 import axios from "axios";
 
 export const HomePage = () => {
@@ -14,9 +15,6 @@ export const HomePage = () => {
   }, [userFromAuth0]);
 
   const [tracksData, setTracksData] = useState([]);
-  const [playlistData, setPlaylistData] = useState([]);
-  const [artistData, setArtistData] = useState([]);
-
 
   const getTracks = async () => {
     const tracksApi = "http://localhost:4000/tracks";
@@ -29,23 +27,9 @@ export const HomePage = () => {
     }
   };
 
-  const getPlaylists = async () => {
-    const playlistApi = "http://localhost:4000/playlists";
-    try {
-      const response = await axios.get(playlistApi);
-      setPlaylistData(response.data.data);
-    } catch (error) {
-      toast.error("Something went wrong!");
-    }
-  };
-
   useEffect(() => {
     getTracks();
-    getPlaylists();
-    getAllArtists();
   }, []);
-
-  //Request to back
 
   const getAllAlbums = async () => {
     try {
@@ -56,20 +40,48 @@ export const HomePage = () => {
     }
   };
 
-  const getAllArtists = async () => {
-    try {
-      const response = await axios.get("http://localhost:4000/artists");
-      setArtistData(response.data.data);
-    } catch (error) {
-      toast.error("Something went wrong!");
-    }
-  };
+
+  // const handleOnClick = () => {
+  //   // if (!category) {
+  //   //   return toast("Please, select a category,", {type: "info", position: "top-center"})
+  //   // }
+
+  //   const formData = new FormData();
+  //   formData.append("url", url);
+
+  //   axios({
+  //     method: "post",
+  //     url: "http://localhost:5000/memes/create",
+  //     data: formData,
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "multipart/form-data",
+  //     },
+  //   })
+  //     .then(() => {
+  //       setIsUpoaded(true);
+  //       toast("Upload successful!", { type: "success", position: "top-center" });
+  //       resetValues()
+  //     })
+  //     .catch(() => toast("Upload failed!", { type: "error", position: "top-center" }));
+  // };
+
+  // const handleFileChange = (e) => {
+  //   const { files } = e.target;
+  //   if (files) {
+  //     setFile(files[0]);
+  //     setTitle(files[0].name.split('.').slice(0, -1).join('.'));
+  //   } else {
+  //     setFile(undefined);
+  //   }
+  //   console.log(files);
+  // };
+
 
   return (
     <>
-      {/* <H1style></H1style>
+      <h1>Memes</h1>
       <div className="home">
-        <Slider title="Recently Played" />
         <motion.div className="slider-container">
           <motion.div
             className="slider"
@@ -86,48 +98,25 @@ export const HomePage = () => {
             })}
           </motion.div>
         </motion.div>
+      </div>
 
-        <Slider title="Followed Playlists" />
-        <motion.div className="slider-container">
-          <motion.div
-            className="slider"
-            drag="x"
-            dragConstraints={{ right: 0, left: -780 }}
-          >
-            {playlistData?.map((album) => {
-              return (
-                <motion.div className="item" key={album.id}>
-                  <img src={album.thumbnail} alt={album.name} />
-                  <p>{album.name}</p>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        </motion.div>
 
-        <Slider title="Popular Artists" />
-        <motion.div className="slider-container">
-          <motion.div
-            className="slider"
-            drag="x"
-            dragConstraints={{ right: 0, left: -1910 }}
-          >
-            {artistData?.map((artists) => {
-              return (
-                <motion.div className="item" key={artists.id}>
-                  <img
-                    className="artistsProfile"
-                    src={artists.photoUrl}
-                    alt={artists.name}
-                  />
-                  <p>{artists.name}</p>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        </motion.div>
-      </div> */}
-    <p>traer memes</p>
+
+
+      {/* <label>
+        <div className="file-input-placeholder">
+        </div>
+        <input type="file" style={{ display: "none" }} />
+        <input type="file" onChange={handleFileChange} style={{ display: "none" }} />
+      </label>
+      <input
+        className="image-title"
+        type="text"
+        placeholder="title"
+        value={url}
+        onChange={(e) => setTitle(e.target.value)}
+      />
+      <button onClick={handleOnClick}>Upload your gif</button> */}
     </>
   );
 };

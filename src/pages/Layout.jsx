@@ -1,8 +1,7 @@
-// import { Outlet } from "react-router-dom";
 import { AuthContext } from "../auth/authContext/AuthContext";
 import { useContext } from "react";
 import { MusicContext } from "../musicProvider/MusicProvider";
-import {NavbarContainer} from "../components/InNavbar"
+import { NavbarContainer } from "../components/InNavbar"
 import { Outlet } from "react-router-dom";
 
 export const Layout = () => {
@@ -20,12 +19,9 @@ export const Layout = () => {
 
   return (
     <>
-    <NavbarContainer/>
-{/* <Outlet> */}
-          
-            {/* <h1> {user?.firstName}</h1> */}
-
-{/* // </Outlet> */}
+      <NavbarContainer />
+      {/* <Outlet> */}
+      {/* // </Outlet> */}
     </>
   );
 };
