@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import { AuthContext } from "../authContext/AuthContext";
+import { MemeContext } from "../memeContext/MemeContext";
 import { motion } from "framer-motion";
 import { StartNavbar } from "../../components/StartNavbar";
 import axios from "axios";
@@ -9,9 +9,8 @@ import "../../components/Slider/Slider.css";
 
 export const AuthHomePage = () => {
   const navigate = useNavigate();
-  const { authState } = useContext(AuthContext);
-  const { user } = authState;
-  const { isLogged } = authState;
+  const { memeState } = useContext(MemeContext);
+  const { user, isLogged } = memeState;
   const { isAuthenticated } = useAuth0();
 
   const [trendData, setTrendData] = useState([]);

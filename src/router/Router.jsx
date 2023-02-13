@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import { AuthProvider } from "../auth/authContext/AuthProvider";
+import { MemeProvider } from "../auth/memeContext/MemeProvider";
 import { useAuth0 } from "@auth0/auth0-react";
 import { AuthHomePage } from "../auth/pages/AuthHomePage";
 import { ProfilePage, HomePage } from "../pages";
@@ -11,7 +11,7 @@ const Router = () => {
 
   return (
     <>
-      <AuthProvider>
+      <MemeProvider>
           <Routes>
             <Route index path="/auth" element={
               isAuthenticated ? <Navigate to="/" /> : <AuthHomePage />
@@ -27,7 +27,7 @@ const Router = () => {
               <Route path="/liked" element={<LikedPlayList />} /> */}
             </Route>
           </Routes>
-      </AuthProvider>
+      </MemeProvider>
     </>
   );
 };

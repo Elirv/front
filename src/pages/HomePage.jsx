@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../auth/authContext/AuthContext";
+import { MemeContext } from "../auth/memeContext/MemeContext";
 import { useAuth0 } from "@auth0/auth0-react";
 import { toast } from "react-hot-toast";
 import { motion } from "framer-motion";
@@ -7,8 +7,8 @@ import axios from "axios";
 
 export const HomePage = () => {
   const { isAuthenticated, user: userFromAuth0 } = useAuth0();
-  const { login, authState } = useContext(AuthContext);
-  const { isLogged, user } = authState;
+  const { login, memeState } = useContext(MemeContext);
+  const { isLogged, user } = memeState;
 
   useEffect(() => {
     login(userFromAuth0);

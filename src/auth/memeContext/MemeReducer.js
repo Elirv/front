@@ -1,6 +1,6 @@
 import { types } from "./types";
 
-export const AuthReducer = (state = {}, action) => {
+export const MemeReducer = (state = {}, action) => {
   switch (action.type) {
     case types.field:
       return {

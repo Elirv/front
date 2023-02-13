@@ -1,10 +1,10 @@
 import { useReducer } from "react";
-import { AuthContext } from "./AuthContext";
+import { MemeContext } from "./MemeContext";
 import { checkUserByEmail } from "../../api/postUsers";
-import { AuthReducer } from "./AuthReducer";
+import { MemeReducer } from "./MemeReducer";
 import { types } from "./types";
 
-export const AuthProvider = ({ children }) => {
+export const MemeProvider = ({ children }) => {
   const initArgs = {
     isLogged: false,
   };
@@ -17,8 +17,8 @@ export const AuthProvider = ({ children }) => {
     };
   };
 
-  const [authState, dispatch] = useReducer(AuthReducer, {}, init); 
-  const { user } = authState;
+  const [memeState, dispatch] = useReducer(MemeReducer, {}, init); 
+  const { user } = memeState;
 
   const login = (userLogin) => {
     const userData = {
@@ -54,14 +54,14 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider
+    <MemeContext.Provider
       value={{
-        authState,
+        memeState,
         login: login,
         logoutReducer: logoutReducer,
       }}
     >
       {children}
-    </AuthContext.Provider>
+    </MemeContext.Provider>
   );
 };
