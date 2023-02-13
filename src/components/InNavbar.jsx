@@ -5,7 +5,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { LogoutButton } from './LogoutButton';
-// import { AuthContext } from '../auth/authContext/AuthContext';
 import { useAuth0, } from '@auth0/auth0-react';
 
 export const NavbarContainer = () => {

@@ -12,7 +12,6 @@ const Router = () => {
   return (
     <>
       <AuthProvider>
-        {/* <MusicProvider> */}
           <Routes>
             <Route index path="/auth" element={
               isAuthenticated ? <Navigate to="/" /> : <AuthHomePage />
@@ -28,7 +27,6 @@ const Router = () => {
               <Route path="/liked" element={<LikedPlayList />} /> */}
             </Route>
           </Routes>
-        {/* </MusicProvider> */}
       </AuthProvider>
     </>
   );

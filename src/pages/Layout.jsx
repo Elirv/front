@@ -8,12 +8,11 @@ export const Layout = () => {
   const { authState } = useContext(AuthContext);
   const { user } = authState;
 
-
   return (
     <>
       <NavbarContainer />
-      {/* <Outlet> */}
-      {/* // </Outlet> */}
+      <Outlet>
+      </Outlet> 
     </>
   );
 };
