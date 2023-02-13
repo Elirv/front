@@ -1,13 +1,9 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import { AuthContext } from "../auth/authContext/AuthContext";
+import React from "react";
 
 export const ProfilePage = () => {
   const { user} = useAuth0();
 
-  // const { login, authState } = useContext(AuthContext);
-  // const { isLogged, user } = authState;
 console.log(user);
   return (
     <>
