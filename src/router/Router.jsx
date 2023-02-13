@@ -1,5 +1,4 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import { MusicProvider } from "../musicProvider/MusicProvider.jsx";
 import { AuthProvider } from "../auth/authContext/AuthProvider";
 import { useAuth0 } from "@auth0/auth0-react";
 import { AuthHomePage } from "../auth/pages/AuthHomePage";
@@ -13,7 +12,6 @@ const Router = () => {
   return (
     <>
       <AuthProvider>
-        <MusicProvider>
           <Routes>
             <Route index path="/auth" element={
               isAuthenticated ? <Navigate to="/" /> : <AuthHomePage />
@@ -30,7 +28,6 @@ const Router = () => {
               <Route path="/liked" element={<LikedPlayList />} /> */}
             </Route>
           </Routes>
-        </MusicProvider>
       </AuthProvider>
     </>
   );
