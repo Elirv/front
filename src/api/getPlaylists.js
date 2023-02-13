@@ -1,6 +1,6 @@
 import { updateUsers } from "./postUsers";
 
-export const getPlaylists = async (id) => {
+export const getMemes = async (id) => {
   try {
     const url = `http://localhost:4000/playlists/${id}`;
 
@@ -12,39 +12,33 @@ export const getPlaylists = async (id) => {
   }
 };
 
-export const createPlaylist = async (
-  newName = "default",
-  newDescription = "default",
-  newthumbnail = "default",
-  userId
+export const createMemes = async (
+  newMeme = "default",
+  newUrl = "default",
 ) => {
   console.log(userId);
-  const playlist = {
-    name: newName,
-    colaborative: false,
-    description: newDescription,
-    thumbnail: newthumbnail,
-    numberSongs: 0,
-    // tracks: [{}]
+  const memees = {
+    name: newMeme,
+    Url: newUrl,
   };
 
   try {
-    const rawResponse = await fetch("http://localhost:4000/playlist/create", {
+    const rawResponse = await fetch("http://localhost:5000/memes/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(playlist),
+      body: JSON.stringify(memees),
     });
     const content = await rawResponse.json();
-    const playlistId = content.data._id;
-    console.log(playlistId);
+    const memeId = content.data._id;
+    console.log(memeId);
 
-    updateUsers(playlistId, userId);
+    updateUsers(memeId, userId);
     console.log(userId);
     console.log("successfull addition DB", content);
     return content;
   } catch (error) {
-    console.log("can not create playlist");
+    console.log("can not create meme");
   }
 };
