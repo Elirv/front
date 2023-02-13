@@ -1,4 +1,3 @@
-export * from './EditProfile';
 export * from './HomeNavBar';
 export * from './InNavbar';
 export * from './LoginButton';
