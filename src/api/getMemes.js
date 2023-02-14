@@ -17,7 +17,7 @@ export const createMemes = async (
   newUrl = "default",
 ) => {
   console.log(userId);
-  const memees = {
+  const memes = {
     name: newMeme,
     Url: newUrl,
   };
@@ -28,7 +28,7 @@ export const createMemes = async (
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(memees),
+      body: JSON.stringify(memes),
     });
     const content = await rawResponse.json();
     const memeId = content.data._id;
