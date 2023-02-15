@@ -20,6 +20,8 @@ export const Layout = () => {
       console.log(response);
       if(response.statusText==='OK') {
         alert('uploaded successfully')
+        // formulario.reset()
+        // setSomeData({})
         // resetValues();
       }
 
@@ -45,7 +47,7 @@ export const Layout = () => {
   return (
     <>
       <NavbarContainer />
-      <form onSubmit={handleSubmit}>
+      <form id="formulario" onSubmit={handleSubmit}>
         <input type='text' name="name" value={someData.name} onChange={(e) =>  setSomeData({ ...someData, name: e.target.value }) } />
         <input type='text' name="url" value={someData.url} onChange={(e) => setSomeData({ ...someData, url: e.target.value }) } />
         <button>Upload your gif</button>

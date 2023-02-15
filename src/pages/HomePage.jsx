@@ -18,10 +18,9 @@ export const HomePage = () => {
     }
   }
 
-  const deleteMeme = async (gif) => {
+  const deleteMeme = async (_id) => {
     try {
-      console.log(gif);
-      const response = await axios.delete("http://localhost:5000/memes/" + id);
+      const response = await axios.delete("http://localhost:5000/memes/" + _id);
 
       setGif(response.data)
       console.log(response.data);
@@ -45,7 +44,7 @@ export const HomePage = () => {
   )
 
   return (
-    <><p>hola?</p>
+    <>
       <div className="container" style={{ width: '18rem' }}>
         {gif?.map((gifs) => {
           return (
