@@ -18,17 +18,17 @@ export const HomePage = () => {
       console.log(error);
     }
   }
-  const deleteMeme = async (gif) => {
-    // try {
-      // console.log(gif.id);
-      const response = await axios.delete("http://localhost:5000/memes/" + id);
+  // const deleteMeme = async (gif) => {
+  //   // try {
+  //     // console.log(gif.id);
+  //     const response = await axios.delete("http://localhost:5000/memes/" + id);
 
-      setGif(response.data)
-    //   // console.log(response.data);
-    // } catch (error) {
-    //   console.log(error);
-    // }
-  }
+  //     setGif(response.data)
+  //   //   // console.log(response.data);
+  //   // } catch (error) {
+  //   //   console.log(error);
+  //   // }
+  // }
 
   console.log(gif)
   useEffect(
@@ -37,11 +37,11 @@ export const HomePage = () => {
     }, []
   )
 
-  useEffect(
-    () => {
-      deleteMeme()
-    }, []
-  )
+  // useEffect(
+  //   () => {
+  //     deleteMeme()
+  //   }, []
+  // )
 
   return (
     <>
