@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios, { HttpStatusCode } from "axios";
+import axios from "axios";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
@@ -7,15 +7,15 @@ export const HomePage = () => {
   const [gif, setGif] = useState([])
 
   const getGif = async () => {
-    try {
 
+    try {
       const response = await axios.get("http://localhost:5000/memes/get");
 
-      console.log(HttpStatusCode.data.name);
-      setGif(response.data)
+      // console.log(response);
+      setGif(response.data.data)
       // console.log(response.data.data._id); 
     } catch (error) {
-      console.log(error);
+      console.log('error');
     }
   }
   // const deleteMeme = async (gif) => {
@@ -31,6 +31,7 @@ export const HomePage = () => {
   // }
 
   console.log(gif)
+
   useEffect(
     () => {
       getGif()
@@ -46,13 +47,13 @@ export const HomePage = () => {
   return (
     <><p>hola?</p>
       <div className="container" style={{ width: '18rem' }}>
-        {gif?.data?.map((gifs) => {
+        {gif?.map((gifs) => {
           return (
             <div className="card" key={gifs._id}>
               <Card.Title>{gifs.name}</Card.Title>
               <Card.Img variant src={gifs.url} />
               <Card.Body>
-                <Button onClick={deleteMeme(id)} variant="primary">Delete</Button>
+                <Button onClick={deleteMeme(_id)} variant="primary">Delete</Button>
               </Card.Body>
             </div>
           )

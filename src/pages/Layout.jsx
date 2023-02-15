@@ -9,13 +9,7 @@ export const Layout = () => {
   const { authState } = useContext(AuthContext);
   const { user } = authState;
 
-  const { Player } = useContext(UserContext);
-  const items = [
-    {
-      slug: "/profile",
-      anchor: "Profile",
-    },
-  ];
+
   const [someData, setSomeData] = useState(
     {
       name: '',
@@ -29,7 +23,7 @@ export const Layout = () => {
       const response = await axios.post("http://localhost:5000/memes/create", someData);
       console.log(response);
       if(response.statusText==='OK') {
-        alert('gif alert')
+        alert('uploaded successfully')
 
       }
 
