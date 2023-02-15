@@ -11,24 +11,24 @@ export const HomePage = () => {
     try {
       const response = await axios.get("http://localhost:5000/memes/get");
 
-      // console.log(response);
       setGif(response.data.data)
-      // console.log(response.data.data._id); 
+
     } catch (error) {
       console.log('error');
     }
   }
-  // const deleteMeme = async (gif) => {
-  //   // try {
-  //     // console.log(gif.id);
-  //     const response = await axios.delete("http://localhost:5000/memes/" + id);
 
-  //     setGif(response.data)
-  //   //   // console.log(response.data);
-  //   // } catch (error) {
-  //   //   console.log(error);
-  //   // }
-  // }
+  const deleteMeme = async (gif) => {
+    try {
+      console.log(gif);
+      const response = await axios.delete("http://localhost:5000/memes/" + id);
+
+      setGif(response.data)
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   console.log(gif)
 
@@ -38,11 +38,11 @@ export const HomePage = () => {
     }, []
   )
 
-  // useEffect(
-  //   () => {
-  //     deleteMeme()
-  //   }, []
-  // )
+  useEffect(
+    () => {
+      deleteMeme()
+    }, []
+  )
 
   return (
     <><p>hola?</p>
@@ -53,7 +53,7 @@ export const HomePage = () => {
               <Card.Title>{gifs.name}</Card.Title>
               <Card.Img variant src={gifs.url} />
               <Card.Body>
-                <Button onClick={deleteMeme(_id)} variant="primary">Delete</Button>
+                <Button onClick = {() => { deleteMeme(gifs._id) }} variant="primary">Delete</Button>
               </Card.Body>
             </div>
           )

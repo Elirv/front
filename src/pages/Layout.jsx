@@ -6,10 +6,6 @@ import { Outlet } from "react-router-dom";
 
 export const Layout = () => {
 
-  const { authState } = useContext(AuthContext);
-  const { user } = authState;
-
-
   const [someData, setSomeData] = useState(
     {
       name: '',
@@ -24,7 +20,7 @@ export const Layout = () => {
       console.log(response);
       if(response.statusText==='OK') {
         alert('uploaded successfully')
-
+        // resetValues();
       }
 
     } catch (error) {
