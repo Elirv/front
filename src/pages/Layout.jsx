@@ -8,6 +8,14 @@ export const Layout = () => {
 
   const { authState } = useContext(AuthContext);
   const { user } = authState;
+
+  const { Player } = useContext(UserContext);
+  const items = [
+    {
+      slug: "/profile",
+      anchor: "Profile",
+    },
+  ];
   const [someData, setSomeData] = useState(
     {
       name: '',
