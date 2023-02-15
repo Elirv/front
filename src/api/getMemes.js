@@ -42,3 +42,22 @@ export const createMemes = async (
     console.log("can not create meme");
   }
 };
+
+const deleteMeme = async (id, token) => {
+  const options = {
+      method: 'DELETE',
+      headers: {
+          Authorization: `Bearer ${token}`,
+      },
+  }
+  try {
+      const res = await fetch("http://localhost:5000/memes/" + id)
+      const data = await res.json() 
+      return data
+      
+  } catch (error) {
+      console.log(error);
+  }
+}
+
+export default deleteMeme

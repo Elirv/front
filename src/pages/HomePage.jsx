@@ -44,7 +44,7 @@ export const HomePage = () => {
   // )
 
   return (
-    <>
+    <><p>hola?</p>
       <div className="container" style={{ width: '18rem' }}>
         {gif?.data?.map((gifs) => {
           return (
@@ -52,7 +52,7 @@ export const HomePage = () => {
               <Card.Title>{gifs.name}</Card.Title>
               <Card.Img variant src={gifs.url} />
               <Card.Body>
-                <Button variant="primary">Delete</Button>
+                <Button onClick={deleteMeme(id)} variant="primary">Delete</Button>
               </Card.Body>
             </div>
           )
